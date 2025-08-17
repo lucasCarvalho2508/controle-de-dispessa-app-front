@@ -1,0 +1,28 @@
+<ng-container *ngIf="despesas.length > 0; else semDespesas">
+  <table>
+    <caption>Gastos do mês</caption>
+    <thead>
+      <tr>
+        <th>Data</th>
+        <th>Valor (R$)</th>
+        <th>Nº Parcelas</th>
+        <th>Valor Parcela (R$)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let despesa of despesas">
+        <td>{{ despesa.data }}</td>
+        <td>{{ despesa.valor | currency:'BRL' }}</td>
+        <td>{{ despesa.parcelas }}</td>
+        <td>{{ despesa.valorParcela | currency:'BRL' }}</td>
+      </tr>
+    </tbody>
+  </table>
+</ng-container>
+
+<ng-template #semDespesas>
+  <div class="placeholder">
+   <img src="assets/imgs/sem-despesas.png" alt="Nenhuma despesa adicionada">
+
+  </div>
+</ng-template>
